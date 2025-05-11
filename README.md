@@ -35,7 +35,7 @@ services:
 
   expressvpn:
     container_name: expressvpn
-    image: superdanio/expressvpn
+    image: dizgovin/expressvpn
     environment:
       - ACTIVATION_CODE={% your-activation-code %}
       - SERVER={% LOCATION/ALIAS/COUNTRY %}

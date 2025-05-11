@@ -5,7 +5,14 @@ umount /etc/resolv.conf
 mv /tmp/resolv.conf /etc/resolv.conf
 sed -i 's/DAEMON_ARGS=.*/DAEMON_ARGS=""/' /etc/init.d/expressvpn
 service expressvpn restart
-/usr/bin/expect /expressvpn/activate.sh
+
+output=$(expect -f /expressvpn/activate.exp "$CODE")
+if echo "$output" | grep -q "Please activate your account" > /dev/null || echo "$output" | grep -q "Activation failed" > /dev/null
+then
+    echo "Activation failed!"
+    exit 1
+fi
+
 expressvpn preferences set auto_connect true
 expressvpn preferences set preferred_protocol $PREFERRED_PROTOCOL
 expressvpn preferences set lightway_cipher $LIGHTWAY_CIPHER

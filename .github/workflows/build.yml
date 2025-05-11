@@ -19,11 +19,11 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
     - name: Build
-      run: docker buildx build --platform=linux/amd64 -t superdanio/expressvpn:test --load .
+      run: docker buildx build --platform=linux/amd64 -t dizgovin/expressvpn:test --load .
     - name: Tests
       run: |
         python3 -m venv .venv
         source .venv/bin/activate
         pip install -r requirements.txt
         pylint --recursive=y --ignore=.venv app/
-        ACTIVATION_CODE=${{ secrets.ACTIVATION_CODE }} TARGET_IMAGE=superdanio/expressvpn:test pytest -v tests/
+        ACTIVATION_CODE=${{ secrets.ACTIVATION_CODE }} TARGET_IMAGE=dizgovin/expressvpn:test pytest -v tests/

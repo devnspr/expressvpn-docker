@@ -1,5 +1,5 @@
 FROM debian:bookworm-slim
-LABEL maintainer="superdanio@gmail.com"
+LABEL maintainer="dizgovinn@gmail.com"
 
 ENV ACTIVATION_CODE=Code
 ENV LOCATION=smart
