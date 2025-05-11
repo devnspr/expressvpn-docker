@@ -23,6 +23,7 @@ fi
 
 if [[ "$(expressvpn status)" == "Not Activated" ]]; then exit 1; fi
 
+rm -r /vpn_shared/resolv.conf
 cp /etc/resolv.conf /vpn_shared/
 
 source .venv/bin/activate
