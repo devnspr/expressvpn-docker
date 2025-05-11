@@ -6,7 +6,7 @@ mv /tmp/resolv.conf /etc/resolv.conf
 sed -i 's/DAEMON_ARGS=.*/DAEMON_ARGS=""/' /etc/init.d/expressvpn
 service expressvpn restart
 
-output=$(expect -f /expressvpn/activate.exp "$CODE")
+output=$(expect -f /expressvpn/activate.exp "$ACTIVATION_CODE")
 if echo "$output" | grep -q "Please activate your account" > /dev/null || echo "$output" | grep -q "Activation failed" > /dev/null
 then
     echo "Activation failed!"
